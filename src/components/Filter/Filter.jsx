@@ -1,4 +1,14 @@
-const Filter = ({ changeFilter, filter }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { addFilter } from 'store/filterSlice/filterSlice';
+
+const Filter = () => {
+  const filter = useSelector(state => state.filter);
+  const dispatch = useDispatch();
+
+  const changeFilter = evt => {
+    dispatch(addFilter(evt.currentTarget.value));
+  };
+
   return (
     <label>
       Find contacts by name
